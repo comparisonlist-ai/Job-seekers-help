@@ -271,3 +271,201 @@ REGISTRATION SCREEN
     </div>
 
 </section>
+
+    <!-- =====================================================
+LOGIN SCREEN
+===================================================== -->
+
+<section
+    id="loginScreen"
+    class="screen hidden">
+
+    <button
+        class="back-btn"
+        onclick="showHome()">
+
+        ← Back
+
+    </button>
+
+    <div class="card">
+
+        <h2>
+
+            Student Login
+
+        </h2>
+
+        <input
+            type="text"
+            id="loginStudentId"
+            placeholder="Student ID">
+
+        <input
+            type="tel"
+            id="loginMobile"
+            maxlength="10"
+            placeholder="Registered Mobile Number">
+
+        <button
+            class="primary-btn"
+            onclick="loginStudent()">
+
+            🔐 Login
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboardScreen"
+    class="screen hidden">
+
+    <div class="card">
+
+        <h2>
+
+            🎓 Student Dashboard
+
+        </h2>
+
+        <div
+            id="studentInfo">
+
+        </div>
+
+        <h3>
+
+            Choose Your Class
+
+        </h3>
+
+        <div class="class-grid">
+
+            <button
+                onclick="selectClass('6')">
+
+                Class 6
+
+            </button>
+
+            <button
+                onclick="selectClass('7')">
+
+                Class 7
+
+            </button>
+
+            <button
+                onclick="selectClass('8')">
+
+                Class 8
+
+            </button>
+
+            <button
+                onclick="selectClass('9')">
+
+                Class 9
+
+            </button>
+
+            <button
+                onclick="selectClass('10')">
+
+                Class 10
+
+            </button>
+
+        </div>
+
+        <br>
+
+        <button
+            class="secondary-btn"
+            onclick="logoutStudent()">
+
+            🚪 Logout
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+SUBJECT SCREEN
+===================================================== -->
+
+<section
+    id="subjectScreen"
+    class="screen hidden">
+
+    <button
+        class="back-btn"
+        onclick="showDashboard()">
+
+        ← Back
+
+    </button>
+
+    <h2
+        id="selectedClassTitle">
+
+        Choose Subject
+
+    </h2>
+
+    <div class="subject-grid">
+
+        <button
+            onclick="openHomework('Mathematics')">
+
+            ➗ Mathematics
+
+        </button>
+
+        <button
+            onclick="openHomework('Science')">
+
+            🔬 Science
+
+        </button>
+
+        <button
+            onclick="openHomework('English')">
+
+            📖 English
+
+        </button>
+
+        <button
+            onclick="openHomework('Social Science')">
+
+            🌍 Social Science
+
+        </button>
+
+        <button
+            onclick="openHomework('Hindi')">
+
+            🇮🇳 Hindi
+
+        </button>
+
+        <button
+            onclick="openHomework('Computer Science')">
+
+            💻 Computer Science
+
+        </button>
+
+    </div>
+
+</section>
