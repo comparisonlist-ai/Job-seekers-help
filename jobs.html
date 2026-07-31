@@ -732,3 +732,320 @@ function logoutStudent() {
 // ======================================================
 // END OF PART 2
 // ======================================================
+
+// ======================================================
+// Students Homework AI
+// Version 5.1
+// PART 3
+// Subject • Homework • AI • Answer
+// ======================================================
+
+// ------------------------------------------------------
+// CLASS
+// ------------------------------------------------------
+
+function selectClass(className) {
+
+    App.currentClass =
+        className;
+
+    document.getElementById(
+
+        "selectedClassTitle"
+
+    ).textContent =
+
+        "Class " +
+
+        className +
+
+        " Subjects";
+
+    showSubjectScreen();
+
+}
+
+// ------------------------------------------------------
+// SUBJECT
+// ------------------------------------------------------
+
+function openHomework(subject) {
+
+    App.currentSubject =
+        subject;
+
+    document.getElementById(
+
+        "selectedSubjectTitle"
+
+    ).textContent =
+
+        "Class " +
+
+        App.currentClass +
+
+        " • " +
+
+        subject;
+
+    showHomeworkScreen();
+
+}
+
+// ------------------------------------------------------
+// AI QUESTION
+// ------------------------------------------------------
+
+async function askAI() {
+
+    if (App.asking) {
+
+        return;
+
+    }
+
+    const question =
+
+        document.getElementById(
+
+            "questionInput"
+
+        ).value.trim();
+
+    if (!question) {
+
+        showMessage(
+
+            "Please enter your homework question."
+
+        );
+
+        return;
+
+    }
+
+    App.asking = true;
+
+    showLoadingScreen();
+
+    try {
+
+        const response =
+
+            await fetch(
+
+                CONFIG.API_URL,
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+
+                            "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        className:
+
+                            App.currentClass,
+
+                        subject:
+
+                            App.currentSubject,
+
+                        language:
+
+                            App.language,
+
+                        studentName:
+
+                            App.student.name,
+
+                        question:
+
+                            question
+
+                    })
+
+                }
+
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+
+                "Unable to contact AI server."
+
+            );
+
+        }
+
+        const result =
+
+            await response.json();
+
+        displayAnswer(
+
+            result.answer ||
+
+            result.text ||
+
+            "No answer received."
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(error);
+
+        displayAnswer(
+
+            "Sorry, AI is currently unavailable. Please try again."
+
+        );
+
+    }
+
+    finally {
+
+        App.asking = false;
+
+    }
+
+}
+
+// ------------------------------------------------------
+// DISPLAY ANSWER
+// ------------------------------------------------------
+
+function displayAnswer(answer) {
+
+    document.getElementById(
+
+        "answerContainer"
+
+    ).innerHTML =
+
+        formatAnswer(answer);
+
+    showAnswerScreen();
+
+}
+
+// ------------------------------------------------------
+// FORMAT ANSWER
+// ------------------------------------------------------
+
+function formatAnswer(text) {
+
+    if (!text) {
+
+        return "";
+
+    }
+
+    return text
+
+        .replace(/\r\n/g, "\n")
+
+        .replace(/\n\n/g, "<br><br>")
+
+        .replace(/\n/g, "<br>")
+
+        .replace(
+
+            /\*\*(.*?)\*\*/g,
+
+            "<strong>$1</strong>"
+
+        );
+
+}
+
+// ------------------------------------------------------
+// COPY ANSWER
+// ------------------------------------------------------
+
+async function copyAnswer() {
+
+    const text =
+
+        document.getElementById(
+
+            "answerContainer"
+
+        ).innerText;
+
+    try {
+
+        await navigator.clipboard.writeText(
+
+            text
+
+        );
+
+        showMessage(
+
+            "Answer copied."
+
+        );
+
+    }
+
+    catch {
+
+        showMessage(
+
+            "Unable to copy answer."
+
+        );
+
+    }
+
+}
+
+// ------------------------------------------------------
+// PLACEHOLDER FEATURES
+// ------------------------------------------------------
+
+function startOCR() {
+
+    showMessage(
+
+        "Homework Scanner coming soon."
+
+    );
+
+}
+
+function startVoiceInput() {
+
+    showMessage(
+
+        "Voice Question feature coming soon."
+
+    );
+
+}
+
+function openNCERTSolutions() {
+
+    showMessage(
+
+        "NCERT Solutions coming soon."
+
+    );
+
+}
+
+// ======================================================
+// END OF PART 3
+// ======================================================
