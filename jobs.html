@@ -1049,3 +1049,291 @@ function openNCERTSolutions() {
 // ======================================================
 // END OF PART 3
 // ======================================================
+
+// ======================================================
+// Students Homework AI
+// Version 5.1
+// PART 4
+// Footer • Utilities • Events
+// ======================================================
+
+// ------------------------------------------------------
+// PRIVACY POLICY
+// ------------------------------------------------------
+
+function showPrivacyPolicy() {
+
+    alert(
+
+`Privacy Policy
+
+Students Homework AI uses your
+registration details only for
+providing educational services.
+
+Your personal information is
+never sold or shared.`
+
+    );
+
+}
+
+// ------------------------------------------------------
+// TERMS
+// ------------------------------------------------------
+
+function showTerms() {
+
+    alert(
+
+`Terms & Conditions
+
+• Designed for CBSE Classes 6–10
+
+• AI answers should always be
+verified before submission.
+
+• Features will improve through
+future updates.`
+
+    );
+
+}
+
+// ------------------------------------------------------
+// CONTACT
+// ------------------------------------------------------
+
+function contactUs() {
+
+    window.location.href =
+
+        "mailto:support@studentshomeworkai.in";
+
+}
+
+// ------------------------------------------------------
+// NETWORK STATUS
+// ------------------------------------------------------
+
+window.addEventListener(
+
+    "offline",
+
+    function () {
+
+        showMessage(
+
+            "No Internet Connection."
+
+        );
+
+    }
+
+);
+
+window.addEventListener(
+
+    "online",
+
+    function () {
+
+        showMessage(
+
+            "Internet Connected."
+
+        );
+
+    }
+
+);
+
+// ------------------------------------------------------
+// AUTO SAVE
+// ------------------------------------------------------
+
+window.addEventListener(
+
+    "beforeunload",
+
+    function () {
+
+        saveSession();
+
+    }
+
+);
+
+document.addEventListener(
+
+    "visibilitychange",
+
+    function () {
+
+        saveSession();
+
+    }
+
+);
+
+// ------------------------------------------------------
+// ENTER KEY
+// ------------------------------------------------------
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    function () {
+
+        const questionBox =
+
+            document.getElementById(
+
+                "questionInput"
+
+            );
+
+        if (questionBox) {
+
+            questionBox.addEventListener(
+
+                "keydown",
+
+                function (e) {
+
+                    if (
+
+                        e.key === "Enter" &&
+
+                        !e.shiftKey
+
+                    ) {
+
+                        e.preventDefault();
+
+                        askAI();
+
+                    }
+
+                }
+
+            );
+
+        }
+
+        const form =
+
+            document.getElementById(
+
+                "registrationForm"
+
+            );
+
+        if (form) {
+
+            form.addEventListener(
+
+                "submit",
+
+                function (e) {
+
+                    e.preventDefault();
+
+                    registerStudent();
+
+                }
+
+            );
+
+        }
+
+    }
+
+);
+
+// ------------------------------------------------------
+// GLOBAL ERROR HANDLING
+// ------------------------------------------------------
+
+window.addEventListener(
+
+    "error",
+
+    function (event) {
+
+        console.error(
+
+            "Application Error:",
+
+            event.error
+
+        );
+
+    }
+
+);
+
+window.addEventListener(
+
+    "unhandledrejection",
+
+    function (event) {
+
+        console.error(
+
+            "Promise Error:",
+
+            event.reason
+
+        );
+
+    }
+
+);
+
+// ------------------------------------------------------
+// STARTUP
+// ------------------------------------------------------
+
+console.log(
+
+    "===================================="
+
+);
+
+console.log(
+
+    CONFIG.APP_NAME
+
+);
+
+console.log(
+
+    "Version " +
+
+    CONFIG.VERSION
+
+);
+
+console.log(
+
+    "studentshomeworkai.in"
+
+);
+
+console.log(
+
+    "Production Build Loaded"
+
+);
+
+console.log(
+
+    "===================================="
+
+// ======================================================
+// END OF SCRIPT.JS
+// Version 5.1
+// ======================================================
+);
