@@ -1,152 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Skill India Digital | Factory & Security Guard Jobs in Chennai</title>
+    <meta charset="UTF-8">
 
-<meta name="description" content="Find Factory Jobs and Security Guard Jobs in Chennai. Free Registration for Job Seekers. Employers can hire skilled workers quickly.">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <meta
+        name="theme-color"
+        content="#1565C0">
+
+    <meta
+        name="description"
+        content="Students Homework AI - Smart AI Homework Help for CBSE Classes 6 to 10">
+
+    <meta
+        name="keywords"
+        content="CBSE, NCERT, AI Homework, Class 6, Class 7, Class 8, Class 9, Class 10">
+
+    <meta
+        name="author"
+        content="Sibaram Dalabehera">
+
+    <title>
+
+        Students Homework AI
+
+    </title>
+
+    <link
+        rel="icon"
+        href="images/logo.png"
+        type="image/png">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
 </head>
 
 <body>
 
-<header>
-    <div class="container">
-        <h1>Skill India Digital</h1>
-        <p>Connecting Job Seekers with Trusted Employers</p>
-    </div>
-</header>
+<div id="app">
 
-<section class="hero">
-    <div class="container">
-        <h2>Factory & Security Guard Jobs in Chennai</h2>
+<div
+    id="appMessage"
+    class="app-message hidden">
+</div>
 
-        <p>
-            Free Registration • Genuine Employers • Fast Placement Assistance
+<!-- =====================================================
+HOME SCREEN
+===================================================== -->
+
+<section
+    id="homeScreen"
+    class="screen">
+
+    <div class="home-container">
+
+        <img
+            src="images/logo.png"
+            alt="Students Homework AI"
+            class="home-logo">
+
+        <h1 class="home-title">
+
+            Students Homework AI
+
+        </h1>
+
+        <p class="home-subtitle">
+
+            AI Homework Help for
+            CBSE Classes 6–10
+
         </p>
 
-        <a href="jobs.html" class="btn">
-            👷 Apply for Jobs
-        </a>
+        <button
+            class="primary-btn"
+            onclick="showRegistrationScreen()">
 
-        <a href="employers.html" class="btn secondary">
-            🏭 Employers Hiring
-        </a>
+            🚀 Start FREE Trial
+
+        </button>
+
+        <div class="login-card">
+
+            <h3>
+
+                Already Registered?
+
+            </h3>
+
+            <button
+                class="secondary-btn"
+                onclick="showLoginScreen()">
+
+                🔐 Student Login
+
+            </button>
+
+        </div>
+
     </div>
-</section>
-
-<section class="services">
-
-<div class="container">
-
-<h2>Our Services</h2>
-
-<div class="card">
-<h3>For Job Seekers</h3>
-
-<ul>
-<li>Factory Jobs</li>
-<li>Security Guard Jobs</li>
-<li>Interview Guidance</li>
-<li>Placement Assistance</li>
-</ul>
-
-</div>
-
-<div class="card">
-
-<h3>For Employers</h3>
-
-<ul>
-<li>Hire Workers Quickly</li>
-<li>Bulk Recruitment</li>
-<li>Verified Candidates</li>
-<li>Recruitment Support</li>
-</ul>
-
-</div>
-
-</div>
 
 </section>
 
-<section class="why">
+<!-- =====================================================
+REGISTRATION SCREEN
+===================================================== -->
 
-<div class="container">
+<section
+    id="registrationScreen"
+    class="screen hidden">
 
-<h2>Why Choose Skill India Digital?</h2>
+    <button
+        class="back-btn"
+        onclick="showHome()">
 
-<ul>
+        ← Back
 
-<li>✔ Free Registration</li>
+    </button>
 
-<li>✔ Genuine Employers</li>
+    <div class="card">
 
-<li>✔ Mobile Friendly</li>
+        <h2>
 
-<li>✔ Quick Response</li>
+            Student Registration
 
-<li>✔ Chennai Job Opportunities</li>
+        </h2>
 
-</ul>
+        <p>
 
-</div>
+            Register once and receive
+            your unique Student ID.
+
+        </p>
+
+        <form
+            id="registrationForm">
+
+            <div class="form-group">
+
+                <label>
+
+                    Student Name
+
+                </label>
+
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter Student Name"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Select Class
+
+                </label>
+
+                <select
+                    id="studentClass"
+                    required>
+
+                    <option value="">
+
+                        Choose Class
+
+                    </option>
+
+                    <option value="6">
+
+                        Class 6
+
+                    </option>
+
+                    <option value="7">
+
+                        Class 7
+
+                    </option>
+
+                    <option value="8">
+
+                        Class 8
+
+                    </option>
+
+                    <option value="9">
+
+                        Class 9
+
+                    </option>
+
+                    <option value="10">
+
+                        Class 10
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Mobile Number
+
+                </label>
+
+                <input
+                    type="tel"
+                    id="studentMobile"
+                    maxlength="10"
+                    placeholder="10 Digit Mobile Number"
+                    required>
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+
+                    Parent Mobile (Optional)
+
+                </label>
+
+                <input
+                    type="tel"
+                    id="parentMobile"
+                    maxlength="10"
+                    placeholder="Parent Mobile Number">
+
+            </div>
+
+            <button
+                type="submit"
+                id="registerButton"
+                class="primary-btn">
+
+                🚀 Register
+
+            </button>
+
+        </form>
+
+    </div>
 
 </section>
-
-<section class="cta">
-
-<div class="container">
-
-<h2>Start Your Career Today</h2>
-
-<p>
-
-Register now and connect with trusted employers looking for factory workers and security guards.
-
-</p>
-
-<a href="jobs.html" class="btn">
-
-Register Free
-
-</a>
-
-</div>
-
-</section>
-
-<footer>
-
-<div class="container">
-
-<p>
-
-© 2026 Skill India Digital
-
-</p>
-
-<p>
-
-Helping Job Seekers Build Better Careers.
-
-</p>
-
-<p>
-
-<a href="about.html">About</a> |
-
-<a href="contact.html">Contact</a>
-
-</p>
-
-</div>
-
-</footer>
-
-</body>
-
-  </html>
