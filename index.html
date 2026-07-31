@@ -468,4 +468,189 @@ SUBJECT SCREEN
 
     </div>
 
+</section>b
+
+    <!-- =====================================================
+HOMEWORK SCREEN
+===================================================== -->
+
+<section
+    id="homeworkScreen"
+    class="screen hidden">
+
+    <button
+        class="back-btn"
+        onclick="showSubjectScreen()">
+
+        ← Back
+
+    </button>
+
+    <h2
+        id="selectedSubjectTitle">
+
+        Homework Help
+
+    </h2>
+
+    <p class="text-center">
+
+        Choose how you want to ask your homework question.
+
+    </p>
+
+    <div class="action-grid">
+
+        <button
+            onclick="showQuestionScreen()">
+
+            ✍️
+            <br>
+            Type Question
+
+        </button>
+
+        <button
+            onclick="startOCR()">
+
+            📷
+            <br>
+            Scan Homework
+
+        </button>
+
+        <button
+            onclick="startVoiceInput()">
+
+            🎤
+            <br>
+            Voice Question
+
+        </button>
+
+        <button
+            onclick="openNCERTSolutions()">
+
+            📚
+            <br>
+            NCERT Solutions
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+QUESTION SCREEN
+===================================================== -->
+
+<section
+    id="questionScreen"
+    class="screen hidden">
+
+    <button
+        class="back-btn"
+        onclick="showHomeworkScreen()">
+
+        ← Back
+
+    </button>
+
+    <div class="card">
+
+        <h2>
+
+            Ask Your Homework Question
+
+        </h2>
+
+        <textarea
+            id="questionInput"
+            rows="7"
+            placeholder="Type your homework question here...">
+
+        </textarea>
+
+        <button
+            class="primary-btn"
+            onclick="askAI()">
+
+            🤖 Get Answer
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+LOADING SCREEN
+===================================================== -->
+
+<section
+    id="loadingScreen"
+    class="screen hidden">
+
+    <div class="loading-card">
+
+        <div class="loader"></div>
+
+        <h2>
+
+            AI is Preparing Your Answer...
+
+        </h2>
+
+        <p>
+
+            Please wait...
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+ANSWER SCREEN
+===================================================== -->
+
+<section
+    id="answerScreen"
+    class="screen hidden">
+
+    <button
+        class="back-btn"
+        onclick="showQuestionScreen()">
+
+        ← Ask Another Question
+
+    </button>
+
+    <div class="card">
+
+        <h2>
+
+            ✅ AI Answer
+
+        </h2>
+
+        <div
+            id="answerContainer">
+
+        </div>
+
+        <br>
+
+        <button
+            class="secondary-btn"
+            onclick="copyAnswer()">
+
+            📋 Copy Answer
+
+        </button>
+
+    </div>
+
 </section>
