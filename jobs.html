@@ -1,115 +1,334 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+// ======================================================
+// Students Homework AI
+// Version 5.1
+// script.js
+// PART 1
+// Configuration • State • Initialization • Navigation
+// ======================================================
 
-<title>Job Seeker Registration | Skill India Digital</title>
+// ------------------------------------------------------
+// CONFIGURATION
+// ------------------------------------------------------
 
-<link rel="stylesheet" href="style.css">
-</head>
+const CONFIG = {
 
-<body>
+    APP_NAME:
+        "Students Homework AI",
 
-<header>
-<div class="container">
-<h1>Skill India Digital</h1>
-<p>Job Seeker Registration</p>
-</div>
-</header>
+    VERSION:
+        "5.1",
 
-<section class="services">
+    API_URL:
+        "/api/chat",
 
-<div class="container">
+    DEFAULT_LANGUAGE:
+        "English"
 
-<h2>Register for Jobs</h2>
+};
 
-<form action="#" method="post">
+// ------------------------------------------------------
+// APPLICATION STATE
+// ------------------------------------------------------
 
-<label>Full Name</label>
-<input type="text" placeholder="Enter Full Name" required>
+const App = {
 
-<label>Mobile Number</label>
-<input type="tel" placeholder="Enter Mobile Number" required>
+    student: null,
 
-<label>WhatsApp Number</label>
-<input type="tel" placeholder="Enter WhatsApp Number">
+    currentClass: "",
 
-<label>Age</label>
-<input type="number" placeholder="Enter Age" required>
+    currentSubject: "",
 
-<label>Gender</label>
-<select required>
-<option value="">Select Gender</option>
-<option>Male</option>
-<option>Female</option>
-<option>Other</option>
-</select>
+    language:
+        CONFIG.DEFAULT_LANGUAGE,
 
-<label>Education</label>
-<select required>
-<option value="">Select Education</option>
-<option>Below 10th</option>
-<option>10th Pass</option>
-<option>12th Pass</option>
-<option>ITI</option>
-<option>Diploma</option>
-<option>Graduate</option>
-</select>
+    asking: false
 
-<label>State</label>
-<input type="text" placeholder="State">
+};
 
-<label>District</label>
-<input type="text" placeholder="District">
+// ------------------------------------------------------
+// INITIALIZATION
+// ------------------------------------------------------
 
-<label>Preferred Job</label>
-<select required>
-<option value="">Select Job</option>
-<option>Factory Worker</option>
-<option>Security Guard</option>
-</select>
+document.addEventListener(
 
-<label>Experience</label>
-<select>
-<option>Fresher</option>
-<option>Less than 1 Year</option>
-<option>1-3 Years</option>
-<option>More than 3 Years</option>
-</select>
+    "DOMContentLoaded",
 
-<label>Ready to Relocate to Chennai?</label>
-<select required>
-<option>Yes</option>
-<option>No</option>
-</select>
+    initializeApp
 
-<label>Additional Information</label>
-<textarea rows="5" placeholder="Write anything you want us to know"></textarea>
+);
 
-<br><br>
+function initializeApp() {
 
-<button class="btn" type="submit">
-Submit Registration
-</button>
+    console.log(
 
-</form>
+        CONFIG.APP_NAME +
+        " Version " +
+        CONFIG.VERSION
 
-</div>
+    );
 
-</section>
+    loadSession();
 
-<footer>
+    if (App.student) {
 
-<div class="container">
+        showDashboard();
 
-<p>© 2026 Skill India Digital</p>
+    }
 
-<p>Helping Job Seekers Build Better Careers.</p>
+    else {
 
-</div>
+        showHome();
 
-</footer>
+    }
 
-</body>
-</html>
+}
+
+// ------------------------------------------------------
+// SCREEN MANAGEMENT
+// ------------------------------------------------------
+
+function hideAllScreens() {
+
+    document
+
+        .querySelectorAll(".screen")
+
+        .forEach(screen => {
+
+            screen.classList.add("hidden");
+
+        });
+
+}
+
+function showHome() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("homeScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+function showRegistrationScreen() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("registrationScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+function showLoginScreen() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("loginScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+function showDashboard() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("dashboardScreen")
+
+        ?.classList.remove("hidden");
+
+    updateDashboard();
+
+}
+
+function showSubjectScreen() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("subjectScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+function showHomeworkScreen() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("homeworkScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+function showQuestionScreen() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("questionScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+function showLoadingScreen() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("loadingScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+function showAnswerScreen() {
+
+    hideAllScreens();
+
+    document
+
+        .getElementById("answerScreen")
+
+        ?.classList.remove("hidden");
+
+}
+
+// ------------------------------------------------------
+// SESSION
+// ------------------------------------------------------
+
+function saveSession() {
+
+    if (!App.student) return;
+
+    localStorage.setItem(
+
+        "studentData",
+
+        JSON.stringify(App.student)
+
+    );
+
+}
+
+function loadSession() {
+
+    try {
+
+        const saved =
+
+            localStorage.getItem(
+
+                "studentData"
+
+            );
+
+        if (saved) {
+
+            App.student =
+
+                JSON.parse(saved);
+
+        }
+
+    }
+
+    catch {
+
+        App.student = null;
+
+    }
+
+}
+
+// ------------------------------------------------------
+// MESSAGE
+// ------------------------------------------------------
+
+function showMessage(message) {
+
+    const box =
+
+        document.getElementById(
+
+            "appMessage"
+
+        );
+
+    if (!box) {
+
+        alert(message);
+
+        return;
+
+    }
+
+    box.textContent =
+
+        message;
+
+    box.classList.remove(
+
+        "hidden"
+
+    );
+
+    clearTimeout(
+
+        showMessage.timer
+
+    );
+
+    showMessage.timer =
+
+        setTimeout(() => {
+
+            box.classList.add(
+
+                "hidden"
+
+            );
+
+        }, 3000);
+
+}
+
+// ------------------------------------------------------
+// STUDENT ID
+// ------------------------------------------------------
+
+function generateStudentId() {
+
+    return "SHAI" +
+
+        Math.floor(
+
+            100000 +
+
+            Math.random() * 900000
+
+        );
+
+}
+
+// ======================================================
+// END OF PART 1
+// ======================================================
